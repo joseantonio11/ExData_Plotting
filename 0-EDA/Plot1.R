@@ -9,18 +9,19 @@ if (!file.exists(nomearquivo)){
 if (!file.exists("./0-EAD")) {unzip(nomearquivo)}
 pathIn <- file.path("./")
 list.files(pathIn, recursive = TRUE)
+
 #2 preparing the database
-power_consum <- read.table("household_power_consumption.txt", header = TRUE, sep = ";",na.strings='?', stringsAsFactors=FALSE)
-#2 converting date and subsetting the data 
+power_consum <- read.table("household_power_consumption.txt", 
+                header = TRUE, sep = ";",na.strings='?', stringsAsFactors=FALSE)
+
+#3 converting date and subsetting the data 
 power_consum$Date <- as.Date(power_consum$Date, format="%d/%m/%Y")
 power_consum <- subset(power_consum, subset=(Date >= "2007-02-01" & Date <= "2007-02-02"))
-#converting the date ant Time format to Date Class and store it in Datetime column
-datetime <- paste(as.Date(power_consum$Date), power_consum$Time)
-datetime
-power_consum$Datetime <- as.POSIXct(datetime)
-power_consum
+#4 converting the date ant Time format to Date Class and store it in Datetime column
+Datetime <- paste(as.Date(power_consum$Date), power_consum$Time)
+power_consum$Datetime <- as.POSIXct(Datetime)
 
-## PLOT 1 - GLOBAL ACTIVE POWER
+#5 PLOT 1 - GLOBAL ACTIVE POWER
 hist(power_consum$Global_active_power, main="Global Active Power", 
      xlab="Global Active Power (kilowatts)", ylab="Frequency", col="Red")
 #saving PNG

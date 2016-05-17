@@ -22,10 +22,10 @@ Datetime <- paste(as.Date(power_consum$Date), power_consum$Time)
 power_consum$Datetime <- as.POSIXct(Datetime)
 
 #5 PLOT 2 - GLOBAL ACTIVE POWER
-plot(power_consum$Date,power_consum$Global_active_power, type="l",
-     ylab="Global Active Power (kilowatts)",
-     xlab="")
-
-#saving PNG
+par(mfrow=c(1,1))
+plot(power_consum$Datetime,power_consum$Global_active_power, type="l",
+     ylab="Global Active Power (kilowatts)",xlab="")
+#saving PNG for Plot2 
 dev.copy(png,'plot2.png',  width = 480, height = 480)
 dev.off()
+

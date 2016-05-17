@@ -22,6 +22,7 @@ Datetime <- paste(as.Date(power_consum$Date), power_consum$Time)
 power_consum$Datetime <- as.POSIXct(Datetime)
 
 #5 PLOT 1 - GLOBAL ACTIVE POWER
+par(mfrow=c(1,1))
 hist(power_consum$Global_active_power, main="Global Active Power", 
      xlab="Global Active Power (kilowatts)", ylab="Frequency", col="Red")
 #saving PNG

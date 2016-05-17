@@ -22,6 +22,7 @@ Datetime <- paste(as.Date(power_consum$Date), power_consum$Time)
 power_consum$Datetime <- as.POSIXct(Datetime)
 
 #5 PLOT 3 - ENERGY SUB METERING
+par(mfrow=c(1,1))
 plot(power_consum$Datetime, power_consum$Sub_metering_1, type = "l", col = "black", xlab = "", ylab = "Energy sub metering")
 lines(power_consum$Datetime, power_consum$Sub_metering_2, type = "l", col = "red")
 lines(power_consum$Datetime, power_consum$Sub_metering_3, type = "l", col = "blue")
